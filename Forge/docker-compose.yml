@@ -1,0 +1,28 @@
+services:
+  server:
+    stdin_open: true
+    tty: true
+    restart: always
+    image: itzg/minecraft-server
+    ports:
+    - "25565:25565"
+    # Simple Voice Chat 
+    #- "24454:24454/udp"
+    # Dynmap
+    #- "8123:8123"
+    environment:
+      EULA: "TRUE"
+      # MAximum memory for minecraft in Gigabytes
+      MAX_MEMORY: 1G
+      TYPE: FORGE
+      VERSION: "1.19.2"
+      DEBUG: "true"
+      DIFFICULTY: normal
+      # Official / Pirate
+      ONLINE_MODE: false
+      SPAWN_PROTECTION: 0
+      # https://motd.gg/
+      MOTD: ""
+    volumes:
+    - .:/data
+    - ./mods:/mods:ro
